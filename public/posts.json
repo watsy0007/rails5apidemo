@@ -1,0 +1,120 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:4000",
+  "resourcePath": "posts",
+  "apis": [
+    {
+      "path": "/posts.json",
+      "operations": [
+        {
+          "summary": "Fetch all posts items",
+          "notes": "this list all the active posts",
+          "parameters": [
+            {
+              "paramType": "page",
+              "name": "integer",
+              "type": "optional",
+              "description": null,
+              "required": false
+            },
+            {
+              "paramType": "per_page",
+              "name": "integer",
+              "type": "optional",
+              "description": null,
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Posts#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/posts/{id}.json",
+      "operations": [
+        {
+          "summary": "get post",
+          "notes": "get post by id",
+          "parameters": [
+            {
+              "paramType": "id",
+              "name": "integer",
+              "type": "required",
+              "description": null,
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "User",
+              "message": "Success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Posts#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "Post": {
+      "id": "Post",
+      "required": [
+        "id",
+        "title",
+        "body"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "post Id"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title"
+        },
+        "body": {
+          "type": "string",
+          "description": "body"
+        }
+      },
+      "description": "A Tag object."
+    }
+  }
+}
